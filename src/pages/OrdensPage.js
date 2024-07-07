@@ -1,88 +1,103 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import './OrdensPage.css';
+import axios from 'axios';
 
-function OrdensPage() {
-  const [ordens, setOrdens] = useState([]);
-  const [numOrdem, setNumOrdem] = useState('');
-
-  const consultarOrdem = () => {
-    let url = 'http://localhost:5000/ordem';
-    if (numOrdem !== '' && numOrdem !== '0') {
-      url += '/' + numOrdem;
-    } else {
-      url += '/0';
-    }
-
-    fetch(url)
-      .then(response => response.json())
-      .then(data => setOrdens(data.ordens))
-      .catch(error => console.error('Erro ao consultar ordens de produção', error));
-  };
-
-  const deleteOrdem = () => {
-    fetch('http://localhost:5000/ordem/' + numOrdem, {
-      method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-    })
-      .then(response => response.json())
-      .then(() => {
-        alert('Ordem deletada com sucesso');
-        setNumOrdem('');
-        consultarOrdem();
-      })
-      .catch(error => console.error('Erro ao deletar ordem', error));
-  };
+const OrdensPage = () => {
+  const [orders, setOrders] = useState([]);
+  const [search, setSearch] = useState('');
+  const [currentPage, setCurrentPage] = useState(1);
+  const [ordersPerPage] = useState(6);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    consultarOrdem();
+    const fetchOrders = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/ordem/0');
+        setOrders(response.data.ordens);
+      } catch (error) {
+        console.error('Erro ao buscar ordens', error);
+      }
+    };
+
+    fetchOrders();
   }, []);
 
+  const handleSearchChange = (e) => {
+    setSearch(e.target.value);
+  };
+
+  const handleSearchSubmit = async (e) => {
+    e.preventDefault();
+    if (search.trim() !== '') {
+      try {
+        const response = await axios.get(`http://localhost:5000/ordem/${search}`);
+        setOrders([response.data]);
+        setCurrentPage(1);
+      } catch (error) {
+        console.error('Erro ao buscar ordem', error);
+        setOrders([]);
+      }
+    } else {
+      // Reset to all orders if search is cleared
+      const response = await axios.get('http://localhost:5000/ordem');
+      setOrders(response.data.ordens);
+    }
+  };
+
+  const handleClick = (id) => {
+    navigate(`/editar/${id}`);
+  };
+
+  // Pagination
+  const indexOfLastOrder = currentPage * ordersPerPage;
+  const indexOfFirstOrder = indexOfLastOrder - ordersPerPage;
+  const currentOrders = orders.slice(indexOfFirstOrder, indexOfLastOrder);
+
+  const renderPagination = () => {
+    const pageNumbers = [];
+    for (let i = 1; i <= Math.ceil(orders.length / ordersPerPage); i++) {
+      pageNumbers.push(
+        <li key={i} className={`page-item ${i === currentPage ? 'active' : ''}`}>
+          <button onClick={() => setCurrentPage(i)} className="page-link">
+            {i}
+          </button>
+        </li>
+      );
+    }
+    return pageNumbers;
+  };
+
   return (
-    <div className="container">
-      <h1>Consultar Ordem de Produção</h1>
-      <div className="form">
-        <label htmlFor="numOrdem">Ordem de produção:</label>
+    <div className="ordens-container">
+      <h1>Listar pedidos</h1>
+      <form onSubmit={handleSearchSubmit} className="search-form">
         <input
-          type="number"
-          id="numOrdem"
-          value={numOrdem}
-          onChange={(e) => setNumOrdem(e.target.value)}
+          type="text"
+          placeholder="Buscar pedido"
+          value={search}
+          onChange={handleSearchChange}
         />
-        <button onClick={consultarOrdem}>Consultar</button>
-        <button onClick={deleteOrdem} className="delete-btn">Excluir</button>
+        <button type="submit">Buscar</button>
+      </form>
+      <h2>Últimos pedidos</h2>
+      <div className="ordens-container">
+        {currentOrders.map((order) => (
+          <div key={order.id} className="ordem" onClick={() => handleClick(order.id)}>
+            <h3>Pedido {order.id}</h3>
+            {order.produtos.map((produto, index) => (
+              <p key={index}>
+                {produto.nome} Qtd {produto.quantidade}
+              </p>
+            ))}
+          </div>
+        ))}
       </div>
-      <h3>Ordem de produção</h3>
-      <hr />
-      <table className="table" id="ordensTable">
-        <thead>
-          <tr>
-            <th>N° Ordem</th>
-            <th>Nome</th>
-            <th>Quantidade</th>
-            <th>Data</th>
-            <th>Ação</th>
-          </tr>
-        </thead>
-        <tbody id="ordensList">
-          {ordens.map((ordem) =>
-            ordem.produtos.map((produto, index) => (
-              <tr key={index}>
-                <td>{ordem.id}</td>
-                <td>{produto.nome}</td>
-                <td>{produto.quantidade}</td>
-                <td>{ordem.data_criacao}</td>
-                <td>
-                  <button onClick={() => setNumOrdem(ordem.id)}>Consultar</button>
-                </td>
-              </tr>
-            ))
-          )}
-        </tbody>
-      </table>
-      <hr />
+      <nav>
+        <ul className="pagination">{renderPagination()}</ul>
+      </nav>
     </div>
   );
-}
+};
 
 export default OrdensPage;
