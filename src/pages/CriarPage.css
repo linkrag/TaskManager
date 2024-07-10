@@ -12,49 +12,10 @@
     --font-family: Roboto, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;
 }
 
-body {
+.criar-page {
     font-family: Arial, sans-serif;
-    margin: 0;
+    margin-left: 5%;
     padding: 0;
-}
-
-header {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px;
-    background-color: #f8f8f8;
-    border-bottom: 1px solid #e0e0e0;
-}
-
-header h1 {
-    margin: 0;
-}
-
-header nav a {
-    margin: 0 10px;
-    text-decoration: none;
-    color: #333;
-    font-weight: bold;
-}
-
-header nav a:hover {
-    text-decoration: underline;
-}
-
-.container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-h1 {
-    font-size: 2em;
-    margin-bottom: 20px;
-}
-
-h2 {
-    font-size: 1.5em;
-    margin-bottom: 10px;
 }
 
 textarea {
@@ -65,21 +26,6 @@ textarea {
     border-radius: 4px;
     font-size: 16px;
     height: 100px;
-}
-
-
-button {
-    padding: 10px 20px;
-    background-color: #333;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #555;
 }
 
 .product-list,
@@ -129,7 +75,7 @@ button:hover {
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     padding: 1rem;
-    width: calc(33.333% - 1rem);
+    width: calc(50%);
     cursor: pointer;
 }
 

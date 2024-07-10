@@ -4,9 +4,11 @@ import { useNavigate } from 'react-router-dom';
 import { Card } from 'primereact/card';
 import { Button } from 'primereact/button';
 import { InputText } from 'primereact/inputtext';
-import 'primereact/resources/themes/saga-blue/theme.css';
-import 'primereact/resources/primereact.min.css';
-import 'primeicons/primeicons.css';
+import { DataTable } from 'primereact/datatable';
+import { Column } from 'primereact/column';
+import 'primereact/resources/themes/md-light-deeppurple/theme.css';
+import 'primereact/resources/primereact.min.css';          
+import 'primeicons/primeicons.css';   
 import './ListarPage.css';
 
 const OrdensPage = () => {
@@ -42,7 +44,7 @@ const OrdensPage = () => {
   return (
     <div className="ordens-page">
       <h1>Listar pedidos</h1>
-      <form onSubmit={handleSearch}>
+      <form style={{ marginRight: '15%', float: 'right' }} onSubmit={handleSearch}>
         <span className="p-input-icon-left">
           <i className="pi pi-search" />
           <InputText value={searchId} onChange={(e) => setSearchId(e.target.value)} placeholder="Buscar pedido" />
@@ -52,14 +54,12 @@ const OrdensPage = () => {
 
       <div className="pedido-cards">
         {pedidos.map((pedido) => (
-          <div>
+          <div key={pedido.id} className="pedido-card">
             <Card title={`Pedido ${pedido.id}`} className="ui-card-shadow" footer={renderFooter(pedido.id)}>
-              {pedido.produtos.map((produto, index) => (
-                <div key={index}>
-                  <span>{produto.nome}</span>
-                  <span style={{ marginLeft: '30px' }}> Qtd {produto.quantidade}</span>
-                </div>
-              ))}
+              <DataTable value={pedido.produtos} scrollable scrollHeight="200px">
+                <Column field="nome" header="Nome do Produto"></Column>
+                <Column field="quantidade" header="Quantidade"></Column>
+              </DataTable>
             </Card>
           </div>
         ))}

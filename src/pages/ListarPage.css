@@ -38,11 +38,23 @@
 }
 
 .pedido-cards {
-  max-width: 1227px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 0fr));
+  max-width: 95%;
+  height: 95%;
+  display: flex;
+  flex-wrap: wrap;
   gap: 20px;
   margin-left: 1%;
+  margin-top: 5%;
+}
+
+.ui-card-shadow {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.datatable-scroll-demo .p-datatable-scrollable-header,
+.datatable-scroll-demo .p-datatable-scrollable-body {
+  overflow-y: auto;
+  max-height: 200px;
 }
 
 .p-input-icon-left>i:first-of-type {
@@ -64,6 +76,7 @@
 }
 
 .p-card .p-card-body {
+  padding: 20px;
   padding: 1rem;
 }
 
