@@ -1,0 +1,299 @@
+:root {
+    --surface-a: #ffffff;
+    --surface-b: #fafafa;
+    --surface-c: rgba(0, 0, 0, .04);
+    --surface-d: rgba(0, 0, 0, .12);
+    --surface-e: #ffffff;
+    --surface-f: #ffffff;
+    --text-color: rgba(0, 0, 0, 0.87);
+    --text-color-secondary: rgba(0, 0, 0, 0.6);
+    --primary-color: #673AB7;
+    --primary-color-text: #ffffff;
+    --font-family: Roboto, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #f8f8f8;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+header h1 {
+    margin: 0;
+}
+
+header nav a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+header nav a:hover {
+    text-decoration: underline;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+textarea {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    height: 100px;
+}
+
+
+button {
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #555;
+}
+
+.product-list,
+.comment-list {
+    margin-bottom: 20px;
+}
+
+.product-list .product-item,
+.comment-list .comment-item {
+    padding: 10px;
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 5px;
+}
+
+.product-item .product-info,
+.comment-item .comment-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.product-item .product-name {
+    font-weight: bold;
+}
+
+.product-item .product-quantity {
+    background-color: #e0e0e0;
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+
+.comment-item .comment-text {
+    font-style: italic;
+    color: #555;
+}
+
+.card-criar {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-decoration: none;
+    color: #333;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 1rem;
+    width: calc(33.333% - 1rem);
+    cursor: pointer;
+}
+
+.card-criar:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.card-criar h3 {
+    margin: 0;
+    padding: 0;
+    font-size: 1.25rem;
+}
+
+.card-criar ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 0;
+    font-size: 14px;
+}
+
+/* ScrollPanel */
+
+.scrollpanel .p-scrollpanel p {
+    padding: .5rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.scrollpanel .p-scrollpanel.custombar1 .p-scrollpanel-wrapper {
+    border-right: 10px solid var(--surface-b);
+}
+
+.scrollpanel .p-scrollpanel.custombar1 .p-scrollpanel-bar {
+    background-color: #673ab7;
+    transition: background-color .2s;
+}
+
+.scrollpanel .p-scrollpanel.custombar1 .p-scrollpanel-bar:hover {
+    background-color: #007ad9;
+}
+
+.scrollpanel .p-col-12 {
+    padding: 2rem;
+}
+
+/* Input Text */
+
+.p-inputtext {
+    font-family: Roboto, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;
+    font-size: 1rem;
+    color: rgba(0, 0, 0, 0.87);
+    background: #ffffff;
+    padding: 1rem 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.38);
+    transition: background-color 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s, background-size 0.2s cubic-bezier(0.64, 0.09, 0.08, 1);
+    appearance: none;
+    border-radius: 4px;
+}
+
+.p-inputtext:enabled:hover {
+    border-color: rgba(0, 0, 0, 0.87);
+}
+
+.p-inputtext:enabled:focus {
+    outline: 0 none;
+    outline-offset: 0;
+    box-shadow: none;
+    border-color: #673AB7;
+}
+
+.p-inputtext.p-error,
+.p-inputtext.p-invalid {
+    border-color: #B00020;
+}
+
+.p-inputtext.p-inputtext-sm {
+    font-size: 0.875rem;
+    padding: 0.875rem 0.875rem;
+}
+
+.p-inputtext.p-inputtext-lg {
+    font-size: 1.25rem;
+    padding: 1.25rem 1.25rem;
+}
+
+
+/* float label */
+
+.p-float-label>label {
+    left: 1rem;
+    color: rgba(0, 0, 0, 0.6);
+    transition-duration: 0.2s;
+}
+
+.p-input-filled .p-inputgroup .p-float-label:first-child input {
+    border-bottom-left-radius: 0;
+}
+
+.p-input-filled .p-inputgroup .p-float-label:last-child input {
+    border-bottom-right-radius: 0;
+}
+
+.p-float-label input:focus~label,
+.p-float-label input.p-filled~label,
+.p-float-label textarea:focus~label,
+.p-float-label textarea.p-filled~label,
+.p-float-label .p-inputwrapper-focus~label,
+.p-float-label .p-inputwrapper-filled~label {
+    top: -0.5rem !important;
+    background-color: #ffffff;
+    padding: 2px 4px;
+    margin-left: -4px;
+    margin-top: 0;
+}
+
+.p-float-label textarea~label {
+    margin-top: 0;
+}
+
+.p-float-label input:focus~label,
+.p-float-label .p-inputwrapper-focus~label {
+    color: #673AB7;
+}
+
+.p-input-filled .p-float-label .p-inputtext {
+    padding-top: 1.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.p-input-filled .p-float-label input:focus~label,
+.p-input-filled .p-float-label input.p-filled~label,
+.p-input-filled .p-float-label textarea:focus~label,
+.p-input-filled .p-float-label textarea.p-filled~label,
+.p-input-filled .p-float-label .p-inputwrapper-focus~label,
+.p-input-filled .p-float-label .p-inputwrapper-filled~label {
+    top: 0.25rem !important;
+    margin-top: 0;
+    background: transparent;
+}
+
+.p-float-label .p-multiselect-label .p-multiselect-token {
+    padding: 0.25rem 1rem;
+    margin-top: 0.25rem;
+    margin-bottom: 0.25rem;
+}
+
+.p-input-filled .p-float-label .p-multiselect .p-multiselect-label {
+    padding-top: 1.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.p-input-filled .p-float-label .p-inputwrapper-filled.p-multiselect .p-multiselect-label {
+    padding-top: 1.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.p-input-filled .p-float-label .p-inputwrapper-filled.p-multiselect.p-multiselect-chip .p-multiselect-token {
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.p-input-filled .p-float-label .p-inputwrapper-filled.p-multiselect.p-multiselect-chip .p-multiselect-token .p-multiselect-token-icon {
+    font-size: 75%;
+}

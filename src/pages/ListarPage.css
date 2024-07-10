@@ -1,0 +1,88 @@
+.ordens-page {
+  padding: 20px;
+  margin-left: 3%;
+}
+
+.ordens-page h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.ordens-page form {
+  display: flex;
+  margin-bottom: 20px;
+  margin-left: 3%;
+}
+
+.ordens-page input {
+  flex: 1;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.ordens-page button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: none;
+  background-color: #673ab7;
+  color: white;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-left: 10px;
+}
+
+.ordens-page button:hover {
+  background-color: #683ab778;
+}
+
+.pedido-cards {
+  max-width: 1227px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 0fr));
+  gap: 20px;
+  margin-left: 1%;
+}
+
+.p-input-icon-left>i:first-of-type {
+  left: 1rem;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.p-input-icon-left>.p-inputtext {
+  padding-left: 3rem;
+}
+
+/* p-card */
+
+.p-card {
+  background: #ffffff;
+  color: rgba(0, 0, 0, 0.87);
+  box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
+  border-radius: 28px;
+}
+
+.p-card .p-card-body {
+  padding: 1rem;
+}
+
+.p-card .p-card-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.p-card .p-card-subtitle {
+  font-weight: 400;
+  margin-bottom: 0.5rem;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.p-card .p-card-content {
+  padding: 1rem 0;
+}
+
+.p-card .p-card-footer {
+  padding: 1rem 0 0 0;
+}

@@ -1,48 +1,44 @@
-import React, { useState, useEffect } from 'react';
+// src/pages/EditarPage.js
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import axios from 'axios';
 import './EditarPage.css';
+import 'primereact/resources/themes/saga-blue/theme.css';
+import 'primereact/resources/primereact.min.css';
+import 'primeicons/primeicons.css';
 
 const EditarPage = () => {
     const { id } = useParams();
-    const [order, setOrder] = useState(null);
+    const [pedido, setPedido] = useState(null);
 
     useEffect(() => {
-        const fetchOrder = async () => {
-            try {
-                const response = await axios.get(`http://localhost:5000/ordem/${id}`);
-                setOrder(response.data);
-            } catch (error) {
-                console.error('Erro ao buscar ordem', error);
-            }
-        };
-
-        fetchOrder();
+        fetch(`http://localhost:5000/ordem/${id}`)
+            .then(response => response.json())
+            .then(data => setPedido(data.ordens[0] || {}))
+            .catch(error => console.error('Error fetching order:', error));
     }, [id]);
 
-    if (!order) {
-        return <div>Carregando...</div>;
+    if (!pedido) {
+        return <div>Loading...</div>;
     }
 
     return (
-        <div className="editar-container">
-            <h1>Detalhes do Pedido</h1>
-            <h2>Pedido {order.id}</h2>
-            <div>
-                <h3>Produtos</h3>
-                {order.produtos.map((produto, index) => (
-                    <p key={index}>
-                        {produto.nome} - Qtd {produto.quantidade}
-                    </p>
+        <div className="editar-page">
+            <h1>Editar pedido</h1>
+            <div className="pedido-details">
+                <h2>Pedido {pedido.id}</h2>
+                {(pedido.produtos || []).map((produto, index) => (
+                    <div key={index}>
+                        <span>{produto.nome}</span>
+                        <span>Qtd {produto.quantidade}</span>
+                    </div>
                 ))}
             </div>
-            <div>
-                <h3>Observações</h3>
-                {order.obs.map((observacao, index) => (
-                    <p key={index}>{observacao.texto}</p>
+            <div className="comments-section">
+                <h3>Comentários</h3>
+                {(pedido.obs || []).map((obs, index) => (
+                    <p key={index}>{obs.texto}</p>
                 ))}
             </div>
-            <p>Data de criação: {order.data_criacao}</p>
         </div>
     );
 };

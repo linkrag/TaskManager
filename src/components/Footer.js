@@ -6,8 +6,8 @@ function Footer() {
   return (
     <footer>
       <div className="Footer">
-        <div className="navbar-logo">Task Manager</div>
-        <ul className="navbar-links">
+        <div className="footer-logo">Task Manager</div>
+        <ul className="footer-links">
           <li><Link to="/">Início</Link></li>
           <li><Link to="/criar">Criar pedidos</Link></li>
           <li><Link to="/listar">Listar pedidos</Link></li>

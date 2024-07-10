@@ -13,13 +13,13 @@
 
 .orders-section {
     padding: 40px 20px;
-  }
-  
-  .orders-section h2 {
+}
+
+.orders-section h2 {
     text-align: center;
     margin-bottom: 20px;
     font-size: 24px;
-  }
+}
 
 .cards-container {
     display: flex;
@@ -106,4 +106,44 @@
 .pagination .page-item.active .page-link {
     background-color: #333;
     color: white;
+}
+
+.editar-page {
+    padding: 20px;
+}
+
+.editar-page h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.pedido-details {
+    margin-bottom: 20px;
+}
+
+.pedido-details h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.pedido-details div {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+}
+
+.comments-section {
+    margin-top: 20px;
+}
+
+.comments-section h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.comments-section p {
+    padding: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 4px;
 }
