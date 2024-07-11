@@ -7,8 +7,8 @@ import { InputText } from 'primereact/inputtext';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import 'primereact/resources/themes/md-light-deeppurple/theme.css';
-import 'primereact/resources/primereact.min.css';          
-import 'primeicons/primeicons.css';   
+import 'primereact/resources/primereact.min.css';
+import 'primeicons/primeicons.css';
 import './ListarPage.css';
 
 const OrdensPage = () => {
@@ -32,11 +32,35 @@ const OrdensPage = () => {
       .catch(error => console.error('Error fetching the order:', error));
   };
 
+  const handleDelete = (id) => {
+    const endpoint = `http://localhost:5000/ordem/${id}`;
+    fetch(endpoint, { method: 'DELETE' })
+      .then(response => {
+        if (response.ok) {
+          setPedidos(prevPedidos => prevPedidos.filter(pedido => pedido.id !== id));
+          alert('Pedido excluído com sucesso');
+        } else {
+          console.error('Failed to delete the order');
+        }
+      })
+      .catch(error => console.error('Error deleting the order:', error));
+  };
+
   const renderFooter = (pedidoId) => {
     return (
       <span>
-        <Button label="Editar" icon="pi pi-fw pi-pencil" style={{ marginRight: '.25em' }} onClick={() => navigate(`/editar/${pedidoId}`)} />
-        <Button label="Excluir" icon="pi pi-times" className="p-button-secondary" />
+        <Button
+          label="Editar"
+          icon="pi pi-fw pi-pencil"
+          style={{ marginRight: '.25em' }}
+          onClick={() => navigate(`/editar/${pedidoId}`)}
+        />
+        <Button
+          label="Excluir"
+          icon="pi pi-times"
+          className="p-button-secondary"
+          onClick={() => handleDelete(pedidoId)}
+        />
       </span>
     );
   };

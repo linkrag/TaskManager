@@ -89,50 +89,51 @@ const CriarPage = () => {
   return (
     <div className='criar-page'>
       <h1>Criar pedido</h1>
-      <div style={{ marginLeft: '3%' }}>
-        <h2>Adicionar Produto</h2>
-        <div style={{ display: 'flex', gap: '1rem' }}>
-          <span className="p-float-label">
-            <InputText id="inputtext" value={newProduto} onChange={(e) => setNewProduto(e.target.value)} />
-            <label htmlFor="inputtext">Produto</label>
-          </span>
-          <span className="p-float-label">
-            <InputText id="inputtext" value={newQuantidade} onChange={(e) => setNewQuantidade(e.target.value)} />
-            <label htmlFor="inputtext">Quantidade</label>
-          </span>
-          <Button label="Adicionar Produto" icon="pi pi-plus" onClick={handleAddProduto} />
+      <div className="card-criar">
+        <div style={{ marginLeft: '3%' }}>
+          <h2>Adicionar Produto</h2>
+          <div style={{ display: 'flex', gap: '1rem' }}>
+            <span className="p-float-label">
+              <InputText id="inputtext" value={newProduto} onChange={(e) => setNewProduto(e.target.value)} />
+              <label htmlFor="inputtext">Produto</label>
+            </span>
+            <span className="p-float-label">
+              <InputText id="inputtext" value={newQuantidade} onChange={(e) => setNewQuantidade(e.target.value)} />
+              <label htmlFor="inputtext">Quantidade</label>
+            </span>
+            <Button label="Adicionar Produto" icon="pi pi-plus" onClick={handleAddProduto} />
+          </div>
+        </div>
+        <div style={{ marginLeft: '5%' }}>
+          <h2>Pedido</h2>
+          <DataTable
+            value={produtos}
+            editMode="row"
+            dataKey="id"
+            onRowEditInit={onRowEditInit}
+            onRowEditCancel={onRowEditCancel}
+            onRowEditSave={onRowEditSave}
+          >
+            <Column
+              field="nome"
+              header="Produto"
+              editor={(props) => inputTextEditor(props, 'nome')}
+            ></Column>
+            <Column
+              field="quantidade"
+              header="Quantidade"
+              editor={(props) => inputTextEditor(props, 'quantidade')}
+            ></Column>
+            <Column
+              rowEditor
+              headerStyle={{ width: '7rem' }}
+              bodyStyle={{ textAlign: 'center' }}
+            ></Column>
+          </DataTable>
         </div>
       </div>
-      <div style={{ marginLeft: '5%' }}>
-        <h2>Pedido</h2>
-        <DataTable
-          value={produtos}
-          editMode="row"
-          dataKey="id"
-          onRowEditInit={onRowEditInit}
-          onRowEditCancel={onRowEditCancel}
-          onRowEditSave={onRowEditSave}
-        >
-          <Column
-            field="nome"
-            header="Produto"
-            editor={(props) => inputTextEditor(props, 'nome')}
-          ></Column>
-          <Column
-            field="quantidade"
-            header="Quantidade"
-            editor={(props) => inputTextEditor(props, 'quantidade')}
-          ></Column>
-          <Column
-            rowEditor
-            headerStyle={{ width: '7rem' }}
-            bodyStyle={{ textAlign: 'center' }}
-          ></Column>
-        </DataTable>
-      </div>
-      <div style={{ marginLeft: '3%' }}>
-        <h2>Comentários</h2>
         <div className="card-criar">
+          <h2>Comentários</h2>
           <div className="p-field p-col-12 p-md-4">
             <span className="p-float-label">
               <InputTextarea id="textarea" value={comentario} onChange={(e) => setComentario(e.target.value)}
@@ -149,7 +150,7 @@ const CriarPage = () => {
             />
           </div>
         </div>
-        <div className="scrollpanel" style={{marginTop:'2%'}}>
+        <div className="scrollpanel" style={{ marginTop: '2%' }}>
           <div className="card-criar">
             <div className="p-grid">
               <div className="p-col-12 p-md-4">
@@ -160,7 +161,6 @@ const CriarPage = () => {
             </div>
           </div>
         </div>
-      </div>
       <Button
         label="Finalizar"
         icon="pi pi-check"

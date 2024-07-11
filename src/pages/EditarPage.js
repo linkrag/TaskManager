@@ -1,6 +1,10 @@
 // src/pages/EditarPage.js
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { Card } from 'primereact/card';
+import { Button } from 'primereact/button';
+import { DataTable } from 'primereact/datatable';
+import { Column } from 'primereact/column';
 import './EditarPage.css';
 import 'primereact/resources/themes/saga-blue/theme.css';
 import 'primereact/resources/primereact.min.css';

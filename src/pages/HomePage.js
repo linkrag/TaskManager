@@ -3,6 +3,8 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Card } from 'primereact/card';
 import { Button } from 'primereact/button';
+import { DataTable } from 'primereact/datatable';
+import { Column } from 'primereact/column';
 import './HomePage.css';
 import 'primereact/resources/themes/saga-blue/theme.css';
 import 'primereact/resources/primereact.min.css';
@@ -26,15 +28,34 @@ const HomePage = () => {
     fetchOrders();
   }, []);
 
-  const handleClick = (id) => {
-    navigate(`/editar/${id}`);
+  const handleDelete = (id) => {
+    const endpoint = `http://localhost:5000/ordem/${id}`;
+    fetch(endpoint, { method: 'DELETE' })
+      .then(response => {
+        if (response.ok) {
+          alert('Pedido excluído com sucesso');
+        } else {
+          console.error('Failed to delete the order');
+        }
+      })
+      .catch(error => console.error('Error deleting the order:', error));
   };
 
   const renderFooter = (pedidoId) => {
     return (
       <span>
-        <Button label="Editar" icon="pi pi-fw pi-pencil" style={{ marginRight: '.25em' }} onClick={() => navigate(`/editar/${pedidoId}`)} />
-        <Button label="Excluir" icon="pi pi-times" className="p-button-secondary" />
+        <Button
+          label="Editar"
+          icon="pi pi-fw pi-pencil"
+          style={{ marginRight: '.25em' }}
+          onClick={() => navigate(`/editar/${pedidoId}`)}
+        />
+        <Button
+          label="Excluir"
+          icon="pi pi-times"
+          className="p-button-secondary"
+          onClick={() => handleDelete(pedidoId)}
+        />
       </span>
     );
   };
@@ -51,12 +72,10 @@ const HomePage = () => {
           {pedidos.map((pedido) => (
             <div>
               <Card title={`Pedido ${pedido.id}`} className="ui-card-shadow" footer={renderFooter(pedido.id)}>
-                {pedido.produtos.slice(0, 5).map((produto, index) => (
-                  <div key={index}>
-                    <span>{produto.nome}</span>
-                    <span style={{ marginLeft: '30px' }}> Qtd {produto.quantidade}</span>
-                  </div>
-                ))}
+                <DataTable value={pedido.produtos.slice(0, 5)} scrollable scrollHeight="200px">
+                  <Column field="nome" header="Nome do Produto"></Column>
+                  <Column field="quantidade" header="Quantidade"></Column>
+                </DataTable>
               </Card>
             </div>
           ))}
