@@ -44,6 +44,10 @@ const EditarPage = () => {
 
     return (
         <div className='criar-page'>
+            <Button
+                icon="pi pi-print"
+                style={{ float: 'right', marginRight: '40%', backgroundColor: 'white', color: 'black' }}
+                onClick={handlePrint} />
             <h1>Visualizar pedido</h1>
             <div className="card-criar">
                 <div style={{ marginLeft: '5%' }}>
@@ -83,11 +87,6 @@ const EditarPage = () => {
                     </div>
                 </div>
             </div>
-            <Button
-                label="Imprimir"
-                icon="pi pi-print"
-                style={{ float: 'right', marginRight: '5%' }}
-                onClick={handlePrint} />
         </div>
     );
 };

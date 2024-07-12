@@ -1,13 +1,11 @@
+// src/pages/CriarPage.js
 import React, { useState } from 'react';
 import axios from 'axios';
-import { DataTable } from 'primereact/datatable';
+import { DataTable } from 'primereact/datatable'; // Example of PrimeReact usage
 import { Column } from 'primereact/column';
-import { InputText } from 'primereact/inputtext';
-import { InputTextarea } from 'primereact/inputtextarea';
-import { Button } from 'primereact/button';
-import 'primereact/resources/themes/md-light-deeppurple/theme.css';
-import 'primereact/resources/primereact.min.css';
-import 'primeicons/primeicons.css';
+import { ScrollPanel } from 'primereact/scrollpanel';
+import CustomFloatLabelInput from '../components/CustomFloatLabelInput'; // Import CustomFloatLabelInput component
+import CustomButton from '../components/CustomButton'; // Import CustomButton component
 import './CriarPage.css';
 
 const CriarPage = () => {
@@ -78,10 +76,12 @@ const CriarPage = () => {
 
   const inputTextEditor = (props, field) => {
     return (
-      <InputText
-        type="text"
+      <CustomFloatLabelInput
+        id={`input-${props.rowIndex}-${field}`}
         value={props.rowData[field]}
         onChange={(e) => onEditorValueChange(props, e.target.value)}
+        label={field.charAt(0).toUpperCase() + field.slice(1)} // Capitalize first letter
+        textarea={field === 'comentario'} // Use textarea for 'comentario' field
       />
     );
   };
@@ -93,16 +93,20 @@ const CriarPage = () => {
         <div style={{ marginLeft: '3%' }}>
           <h2>Adicionar Produto</h2>
           <div style={{ display: 'flex', gap: '1rem' }}>
-            <span className="p-float-label">
-              <InputText id="inputtext" value={newProduto} onChange={(e) => setNewProduto(e.target.value)} />
-              <label htmlFor="inputtext">Produto</label>
-            </span>
-            <span className="p-float-label">
-              <InputText id="inputtext" value={newQuantidade} onChange={(e) => setNewQuantidade(e.target.value)} />
-              <label htmlFor="inputtext">Quantidade</label>
-            </span>
-            <Button label="Adicionar Produto" icon="pi pi-plus" onClick={handleAddProduto} />
+            <CustomFloatLabelInput
+              id="inputtext-produto"
+              value={newProduto}
+              onChange={(e) => setNewProduto(e.target.value)}
+              label="Produto"
+            />
+            <CustomFloatLabelInput
+              id="inputtext-quantidade"
+              value={newQuantidade}
+              onChange={(e) => setNewQuantidade(e.target.value)}
+              label="Quantidade"
+            />
           </div>
+          <CustomButton label="Adicionar Produto" icon="pi pi-plus" onClick={handleAddProduto} />
         </div>
         <div style={{ marginLeft: '5%' }}>
           <h2>Pedido</h2>
@@ -132,40 +136,44 @@ const CriarPage = () => {
           </DataTable>
         </div>
       </div>
-        <div className="card-criar">
-          <h2>Comentários</h2>
-          <div className="p-field p-col-12 p-md-4">
-            <span className="p-float-label">
-              <InputTextarea id="textarea" value={comentario} onChange={(e) => setComentario(e.target.value)}
-                rows={5}
-                cols={30}
-                autoResize />
-              <label htmlFor="textarea">Inserir comentário</label>
-            </span>
-            <Button
-              label="Inserir comentário"
-              icon="pi pi-plus"
-              style={{ float: 'right', marginRight: '50%' }}
-              onClick={handleAddComentario}
-            />
-          </div>
+
+      <div className="card-criar">
+        <h2>Comentários</h2>
+        <div className="p-field p-col-12 p-md-4">
+          <CustomFloatLabelInput
+            id="textarea-comentario"
+            value={comentario}
+            onChange={(e) => setComentario(e.target.value)}
+            label="Inserir comentário"
+            textarea
+          />
+          <CustomButton
+            label="Inserir comentário"
+            icon="pi pi-plus"
+            onClick={handleAddComentario}
+            className="comment-button"
+          />
         </div>
-        <div className="scrollpanel" style={{ marginTop: '2%' }}>
-          <div className="card-criar">
-            <div className="p-grid">
-              <div className="p-col-12 p-md-4">
-                {comentarios.map((comentario, index) => (
-                  <div key={index}>{comentario}</div>
-                ))}
-              </div>
+      </div>
+      <div className="card-criar" style={{ marginTop: '3%' }}>
+        <div className="p-col-12 p-md-4" style={{ marginTop: '2%' }}>
+          <ScrollPanel style={{ width: '100%', height: '200px' }} className="custombar1">
+            <div style={{ padding: '1em', lineHeight: '1.5' }}>
+              {comentarios.map((comentario, index) => (
+                <div key={index}>{comentario}</div>
+              ))}
             </div>
-          </div>
+          </ScrollPanel>
         </div>
-      <Button
-        label="Finalizar"
-        icon="pi pi-check"
-        style={{ float: 'right', marginRight: '5%' }}
-        onClick={handleFinalizar} />
+      </div>
+      <div style={{ marginRight: '50%', marginBottom: '5%'}}>
+        <CustomButton
+          label="Finalizar"
+          icon="pi pi-check"
+          onClick={handleFinalizar}
+          className="finalizar-button"
+        />
+      </div>
     </div>
   );
 };

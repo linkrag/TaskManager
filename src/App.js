@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import NavBar from './components/NavBar';
+import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
 import CriarPage from './pages/CriarPage';
 import ListarPage from './pages/ListarPage';
@@ -16,6 +17,7 @@ function App() {
         <Route path="/criar" element={<CriarPage />} />
         <Route path="/view/:id" element={<ViewPage />} />
       </Routes>
+      <Footer />
     </Router>
   );
 }

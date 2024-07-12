@@ -1,9 +1,8 @@
-// src/pages/OrdensPage.js
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Card } from 'primereact/card';
-import { Button } from 'primereact/button';
 import { InputText } from 'primereact/inputtext';
+import Card from '../components/Card';
+import Button from '../components/CustomButton';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import 'primereact/resources/themes/md-light-deeppurple/theme.css';
@@ -22,20 +21,6 @@ const OrdensPage = () => {
       .then(data => setPedidos(data.ordens || []))
       .catch(error => console.error('Error fetching orders:', error));
   }, []);
-
-  useEffect(() => {
-    const handleEnterKeyPress = (event) => {
-      if (event.key === 'Enter') {
-        handleSearch(event);
-      }
-    };
-
-    window.addEventListener('keydown', handleEnterKeyPress);
-
-    return () => {
-      window.removeEventListener('keydown', handleEnterKeyPress);
-    };
-  }, [searchId]);
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -65,8 +50,7 @@ const OrdensPage = () => {
       <span>
         <Button
           label="Visualizar"
-          icon="pi pi-fw pi-pencil"
-          style={{ marginRight: '.25em' }}
+          icon="pi pi-pencil"
           onClick={() => navigate(`/view/${pedidoId}`)}
         />
         <Button
@@ -90,15 +74,16 @@ const OrdensPage = () => {
             value={searchId}
             onChange={(e) => setSearchId(e.target.value)}
             placeholder="Buscar pedido"
+            onKeyDown={(e) => e.key === 'Enter' && handleSearch(e)}
           />
         </span>
-        <Button type="submit">Buscar</Button>
+        <Button type="submit" label="Buscar" />
       </form>
 
       <div className="pedido-cards">
         {pedidos.map((pedido) => (
           <div key={pedido.id} className="pedido-card">
-            <Card title={`Pedido ${pedido.id}`} className="ui-card-shadow" footer={renderFooter(pedido.id)}>
+            <Card title={`Pedido ${pedido.id}`} footer={renderFooter(pedido.id)}>
               <DataTable value={pedido.produtos} scrollable scrollHeight="200px">
                 <Column field="nome" header="Nome do Produto"></Column>
                 <Column field="quantidade" header="Quantidade"></Column>

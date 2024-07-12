@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { Card } from 'primereact/card';
-import { Button } from 'primereact/button';
+import Card from '../components/Card';
+import Button from '../components/CustomButton';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import './HomePage.css';
