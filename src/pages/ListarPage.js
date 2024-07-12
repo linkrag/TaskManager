@@ -17,11 +17,25 @@ const OrdensPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch('http://localhost:5000/ordem/0') // assuming /ordem/0 fetches all orders
+    fetch('http://localhost:5000/ordem/0')
       .then(response => response.json())
       .then(data => setPedidos(data.ordens || []))
       .catch(error => console.error('Error fetching orders:', error));
   }, []);
+
+  useEffect(() => {
+    const handleEnterKeyPress = (event) => {
+      if (event.key === 'Enter') {
+        handleSearch(event);
+      }
+    };
+
+    window.addEventListener('keydown', handleEnterKeyPress);
+
+    return () => {
+      window.removeEventListener('keydown', handleEnterKeyPress);
+    };
+  }, [searchId]);
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -50,10 +64,10 @@ const OrdensPage = () => {
     return (
       <span>
         <Button
-          label="Editar"
+          label="Visualizar"
           icon="pi pi-fw pi-pencil"
           style={{ marginRight: '.25em' }}
-          onClick={() => navigate(`/editar/${pedidoId}`)}
+          onClick={() => navigate(`/view/${pedidoId}`)}
         />
         <Button
           label="Excluir"
@@ -71,9 +85,14 @@ const OrdensPage = () => {
       <form style={{ marginRight: '15%', float: 'right' }} onSubmit={handleSearch}>
         <span className="p-input-icon-left">
           <i className="pi pi-search" />
-          <InputText value={searchId} onChange={(e) => setSearchId(e.target.value)} placeholder="Buscar pedido" />
+          <InputText
+            style={{ borderRadius: '25px' }}
+            value={searchId}
+            onChange={(e) => setSearchId(e.target.value)}
+            placeholder="Buscar pedido"
+          />
         </span>
-        <button type="submit">Buscar</button>
+        <Button type="submit">Buscar</Button>
       </form>
 
       <div className="pedido-cards">

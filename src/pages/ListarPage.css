@@ -51,6 +51,10 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+td, th{
+  background: rgba(69, 75, 228, 0.05);
+}
+
 .datatable-scroll-demo .p-datatable-scrollable-header,
 .datatable-scroll-demo .p-datatable-scrollable-body {
   overflow-y: auto;
@@ -69,7 +73,7 @@
 /* p-card */
 
 .p-card {
-  background: #ffffff;
+  background: rgba(69, 75, 228, 0.05);
   color: rgba(0, 0, 0, 0.87);
   box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
   border-radius: 28px;

@@ -45,10 +45,10 @@ const HomePage = () => {
     return (
       <span>
         <Button
-          label="Editar"
+          label="Visualizar"
           icon="pi pi-fw pi-pencil"
           style={{ marginRight: '.25em' }}
-          onClick={() => navigate(`/editar/${pedidoId}`)}
+          onClick={() => navigate(`/view/${pedidoId}`)}
         />
         <Button
           label="Excluir"
