@@ -1,0 +1,36 @@
+.custom-button {
+  display: inline-block;
+  border: none;
+  border-radius: 25px;
+  margin-right: 5px;
+  margin-left: 5px;
+  background-color: #673ab7; /* Material Design Light Deep Purple */
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 10px 20px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.3s;
+  font-family: 'Roboto', sans-serif; /* Google Material Design font */
+}
+
+.custom-button:hover {
+  background-color: #512da8; /* Darker shade on hover */
+}
+
+.custom-button .material-icons {
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+.comment-button {
+  float: right;
+  margin-top: 1rem;
+}
+
+.finalizar-button {
+  float: right;
+  margin-top: 2rem;
+}

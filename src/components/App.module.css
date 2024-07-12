@@ -1,0 +1,68 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@1,300&family=Raleway:wght@200&display=swap");
+
+footer {
+  background-color: white;
+  padding: 0 2rem 0;
+  font-size: 1rem;
+  color: black;
+  font-family: "Montserrat Alternates", sans-serif;
+  font-family: "Raleway", sans-serif;
+  font-weight: 500;
+  border-top: 1px solid;
+  border-image: linear-gradient(to left, #0000001c 90%, transparent 50%) 100% 1;
+}
+
+.branch {
+  padding: 1rem;
+}
+
+.branch h2 {
+  margin: 1rem;
+}
+
+.lower {
+  display: -webkit-box;
+  vertical-align: top;
+}
+
+.socials {
+  text-align: left;
+  padding: 1rem;
+  width: 50%;
+}
+
+.social_icons span {
+  background-color: #828282;
+  color: #828282;
+  width: 44px;
+  height: 44px;
+  text-align: left;
+  margin-right: 8px;
+  border-radius: 50%;
+  transition: all 0.2s ease-in-out;
+  margin: 2rem;
+}
+
+.social_icons a:active,
+.social_icons a:focus,
+.social_icons a:hover {
+  color: #828282;
+  background-color: #29aafe;
+}
+
+.links a {
+  color: black;
+  font-size: 13px;
+  height: 1px;
+  margin-left: 0;
+  text-decoration: none;
+}
+
+ul {
+  margin: 0%;
+  list-style: none;
+}
+
+h4 {
+  margin: 0%;
+}

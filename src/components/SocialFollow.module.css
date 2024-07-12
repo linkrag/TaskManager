@@ -1,0 +1,19 @@
+/* SOCIAL STUFF */
+.social_container {
+    padding: 25px 50px;
+}
+
+.icon {
+    color: #828282;
+}
+
+a {
+    margin: 1rem;
+    transition: transform 250ms;
+    display: inline-block;
+    color: white;
+}
+
+a:hover {
+    transform: translateY(-2px);
+}
