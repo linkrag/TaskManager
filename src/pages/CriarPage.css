@@ -16,6 +16,7 @@
     font-family: Arial, sans-serif;
     margin-left: 5%;
     padding: 0;
+    margin-bottom: 3rem;
 }
 
 textarea {
@@ -76,7 +77,7 @@ textarea {
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     padding: 1rem;
-    width: calc(50%);
+    width: calc(80%);
     cursor: pointer;
 }
 
@@ -96,6 +97,16 @@ textarea {
     padding: 0;
     margin: 10px 0 0;
     font-size: 14px;
+}
+
+.custom-button print {
+    color: black;
+    background-color: white;
+}
+
+.custom-button print :hover {
+    color: black;
+    background-color: white;
 }
 
 /* ScrollPanel */

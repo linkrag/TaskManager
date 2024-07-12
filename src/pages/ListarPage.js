@@ -16,19 +16,36 @@ const OrdensPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch('http://localhost:5000/ordem/0')
-      .then(response => response.json())
-      .then(data => setPedidos(data.ordens || []))
-      .catch(error => console.error('Error fetching orders:', error));
+    fetchPedidos('http://localhost:5000/ordem/0');
   }, []);
+
+  const fetchPedidos = (url) => {
+    fetch(url)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(data => setPedidos(data.ordens || []))
+      .catch(error => {
+        console.error('Error fetching from server:', error);
+        fetch('/backupData.json')
+          .then(response => {
+            if (!response.ok) {
+              throw new Error('Network response was not ok');
+            }
+            return response.json();
+          })
+          .then(data => setPedidos(data.ordens || []))
+          .catch(error => console.error('Error fetching backup data:', error));
+      });
+  };
 
   const handleSearch = (e) => {
     e.preventDefault();
     const endpoint = searchId ? `http://localhost:5000/ordem/${searchId}` : 'http://localhost:5000/ordem/0';
-    fetch(endpoint)
-      .then(response => response.json())
-      .then(data => setPedidos(data.ordens || []))
-      .catch(error => console.error('Error fetching the order:', error));
+    fetchPedidos(endpoint);
   };
 
   const handleDelete = (id) => {

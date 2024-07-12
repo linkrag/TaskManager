@@ -4,7 +4,7 @@
   border-radius: 25px;
   margin-right: 5px;
   margin-left: 5px;
-  background-color: #673ab7; /* Material Design Light Deep Purple */
+  background-color: #673ab7;
   color: white;
   font-size: 14px;
   font-weight: 500;
@@ -13,11 +13,11 @@
   text-align: center;
   text-decoration: none;
   transition: background-color 0.3s;
-  font-family: 'Roboto', sans-serif; /* Google Material Design font */
+  font-family: 'Roboto', sans-serif;
 }
 
 .custom-button:hover {
-  background-color: #512da8; /* Darker shade on hover */
+  background-color: #512da8;
 }
 
 .custom-button .material-icons {

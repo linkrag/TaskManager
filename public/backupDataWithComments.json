@@ -1,0 +1,16 @@
+{
+    "ordens": [
+      {
+        "id": 1,
+        "produtos": [
+          { "nome": "Produto A", "quantidade": 2 },
+          { "nome": "Produto B", "quantidade": 5 }
+        ],
+        "obs": [
+          { "texto": "Comentário 1" },
+          { "texto": "Comentário 2" }
+        ]
+      }
+    ]
+  }
+  
