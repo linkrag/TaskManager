@@ -1,9 +1,8 @@
-// src/pages/EditarPage.js
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { InputTextarea } from 'primereact/inputtextarea';
-import { Button } from 'primereact/button';
+import Button from '../components/CustomButton';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import './CriarPage.css';
@@ -18,13 +17,30 @@ const EditarPage = () => {
     const [comentario, setComentario] = useState('');
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/ordem/${id}`)
-            .then(response => {
+        const fetchPedido = async () => {
+            try {
+                const response = await axios.get(`http://localhost:5000/ordem/${id}`);
                 const data = response.data.ordens[0];
                 setPedido(data);
-                setComentarios(data.obs);
-            })
-            .catch(error => console.error('Error fetching order:', error));
+                setComentarios(data.obs || []);
+            } catch (error) {
+                console.error('Error fetching order from server:', error);
+                try {
+                    const backupResponse = await axios.get('/backupDataWithComments.json');
+                    const data = backupResponse.data.ordens.find(order => order.id === parseInt(id));
+                    if (data) {
+                        setPedido(data);
+                        setComentarios(data.obs || []);
+                    } else {
+                        console.error('Order not found in backup data');
+                    }
+                } catch (backupError) {
+                    console.error('Error fetching backup data:', backupError);
+                }
+            }
+        };
+
+        fetchPedido();
     }, [id]);
 
     const handleAddComentario = () => {
@@ -62,10 +78,14 @@ const EditarPage = () => {
                 <h2>Comentários</h2>
                 <div className="p-field p-col-12 p-md-4">
                     <span className="p-float-label">
-                        <InputTextarea id="textarea" value={comentario} onChange={(e) => setComentario(e.target.value)}
+                        <InputTextarea
+                            id="textarea"
+                            value={comentario}
+                            onChange={(e) => setComentario(e.target.value)}
                             rows={5}
                             cols={30}
-                            autoResize />
+                            autoResize
+                        />
                         <label htmlFor="textarea">Inserir comentário</label>
                     </span>
                     <Button

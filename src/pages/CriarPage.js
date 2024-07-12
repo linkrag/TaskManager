@@ -1,4 +1,3 @@
-// src/pages/CriarPage.js
 import React, { useState } from 'react';
 import axios from 'axios';
 import { DataTable } from 'primereact/datatable'; // Example of PrimeReact usage
@@ -148,6 +147,7 @@ const CriarPage = () => {
             textarea
           />
           <CustomButton
+            style={{ marginTop: '0' }}
             label="Inserir comentário"
             icon="pi pi-plus"
             onClick={handleAddComentario}
@@ -164,15 +164,14 @@ const CriarPage = () => {
               ))}
             </div>
           </ScrollPanel>
+          <CustomButton
+            style={{ marginTop: '0' }}
+            label="Finalizar"
+            icon="pi pi-check"
+            onClick={handleFinalizar}
+            className="finalizar-button"
+          />
         </div>
-      </div>
-      <div style={{ marginRight: '50%', marginBottom: '5%'}}>
-        <CustomButton
-          label="Finalizar"
-          icon="pi pi-check"
-          onClick={handleFinalizar}
-          className="finalizar-button"
-        />
       </div>
     </div>
   );

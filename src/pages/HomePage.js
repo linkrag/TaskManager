@@ -10,22 +10,27 @@ import 'primereact/resources/themes/saga-blue/theme.css';
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
 
-
 const HomePage = () => {
-  const [pedidos, setOrders] = useState([]);
+  const [pedidos, setPedidos] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchOrders = async () => {
+    const fetchPedidos = async () => {
       try {
         const response = await axios.get('http://localhost:5000/ordem/0');
-        setOrders(response.data.ordens.slice(-6)); // Get the last 6 orders
+        setPedidos(response.data.ordens.slice(-6)); // Get the last 6 orders
       } catch (error) {
-        console.error('Erro ao buscar ordens', error);
+        console.error('Error fetching orders from server:', error);
+        try {
+          const backupResponse = await axios.get('/backupData.json');
+          setPedidos(backupResponse.data.ordens.slice(-6)); // Get the last 6 orders from backup data
+        } catch (backupError) {
+          console.error('Error fetching backup data:', backupError);
+        }
       }
     };
 
-    fetchOrders();
+    fetchPedidos();
   }, []);
 
   const handleDelete = (id) => {
@@ -34,6 +39,7 @@ const HomePage = () => {
       .then(response => {
         if (response.ok) {
           alert('Pedido excluído com sucesso');
+          setPedidos(prevPedidos => prevPedidos.filter(pedido => pedido.id !== id));
         } else {
           console.error('Failed to delete the order');
         }
@@ -70,7 +76,7 @@ const HomePage = () => {
         <h2>Últimos pedidos</h2>
         <div className="pedido-cards">
           {pedidos.map((pedido) => (
-            <div>
+            <div key={pedido.id}>
               <Card title={`Pedido ${pedido.id}`} className="ui-card-shadow" footer={renderFooter(pedido.id)}>
                 <DataTable value={pedido.produtos.slice(0, 5)} scrollable scrollHeight="200px">
                   <Column field="nome" header="Nome do Produto"></Column>

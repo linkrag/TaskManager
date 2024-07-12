@@ -1,4 +1,33 @@
-# Getting Started with Create React App
+# Projeto react do TaskManager
+
+## Objetivo
+
+O objetivo desse projeto é produzir uma camda de front utilizando o React provendo um aspecto e leveza maiores.
+
+O projeto é um organizador para um fluxo de produção interno da empresa facilitando a transformação de pedidos separados em ordens de produção
+únicas. 
+
+Com isso, o trabalho ficará organizado de uma forma mais abstrata e de fácil compreensão para funcionários da produção compreenderem.
+
+As funcionalidades são de gerar uma ordem de produção com base em várias notas de pedido contendo diversos produtos, esses produtos são adicionados a lista
+de forma separada e ao final, quando a ordem for gerada, são unificados para que haja apenas o total.
+
+Há a possibilidade de consultar todas as ordens de produção já geradas e deletar caso necessário.
+
+Por fim, é possível anexar uma observação a uma ordem de produção caso haja necessidade de registro de informações adicionais e a deleção dessas.
+
+---
+
+## Bibliotecas
+
+### `npm install primereact --save`
+### `npm install primeicons --save`
+
+
+## [Projeto Figma](https://www.figma.com/design/8JxhPxAVmSoUOYKudMfiqu/Task-Manager?node-id=0-1&t=dbSkpMOYQkBE5p6Y-1)
+
+
+## Available Scripts
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
