@@ -62,7 +62,7 @@ const EditarPage = () => {
         <div className='criar-page'>
             <Button
                 icon="pi pi-print"
-                style={{ float: 'right', marginRight: '40%', backgroundColor: 'white', color: 'black' }}
+                style={{ float: 'right', marginRight: '17%', backgroundColor: 'white', color: 'black' }}
                 onClick={handlePrint} />
             <h1>Visualizar pedido</h1>
             <div className="card-criar">
