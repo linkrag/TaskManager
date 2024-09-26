@@ -24,7 +24,9 @@ Por fim, é possível anexar uma observação a uma ordem de produção caso haj
 ### `npm install primeicons --save`
 
 
-## [Projeto Figma](https://www.figma.com/design/8JxhPxAVmSoUOYKudMfiqu/Task-Manager?node-id=0-1&t=dbSkpMOYQkBE5p6Y-1)
+## Figma
+
+[Projeto Figma](https://www.figma.com/design/8JxhPxAVmSoUOYKudMfiqu/Task-Manager?node-id=0-1&t=dbSkpMOYQkBE5p6Y-1)
 
 ## Microserviços
 
