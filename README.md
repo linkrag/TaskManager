@@ -26,6 +26,14 @@ Por fim, é possível anexar uma observação a uma ordem de produção caso haj
 
 ## [Projeto Figma](https://www.figma.com/design/8JxhPxAVmSoUOYKudMfiqu/Task-Manager?node-id=0-1&t=dbSkpMOYQkBE5p6Y-1)
 
+## Microserviços
+
+### [Login](https://github.com/linkrag/pos-fullstack-login)
+Esse é o microserviço responsável pelo controle de usuários e acesso a plataforma.
+
+### [Ordens](https://github.com/linkrag/pos-fullstack-basico)
+Esse é o microserviço responsável pelo motor da aplicação gerando e armazenando ordens de serviço e observações.
+
 
 ## Available Scripts
 
