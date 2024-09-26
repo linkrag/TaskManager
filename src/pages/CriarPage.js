@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { DataTable } from 'primereact/datatable'; // Example of PrimeReact usage
+import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import { ScrollPanel } from 'primereact/scrollpanel';
-import CustomFloatLabelInput from '../components/CustomFloatLabelInput'; // Import CustomFloatLabelInput component
-import CustomButton from '../components/CustomButton'; // Import CustomButton component
+import CustomFloatLabelInput from '../components/CustomFloatLabelInput';
+import CustomButton from '../components/CustomButton';
 import './CriarPage.css';
 
 const CriarPage = () => {
@@ -24,11 +24,11 @@ const CriarPage = () => {
 
   const handleFinalizar = async () => {
     try {
-      const ordemResponse = await axios.post('http://localhost:5000/ordem', { produtos });
+      const ordemResponse = await axios.put('http://localhost:5003/ordem', { produtos });
       const ordemId = ordemResponse.data.id;
 
       for (const texto of comentarios) {
-        await axios.post('http://localhost:5000/obs', { ordem_id: ordemId, texto });
+        await axios.put('http://localhost:5003/obs', { ordem_id: ordemId, texto });
       }
 
       alert('Ordem de produção criada com sucesso!');
@@ -79,8 +79,8 @@ const CriarPage = () => {
         id={`input-${props.rowIndex}-${field}`}
         value={props.rowData[field]}
         onChange={(e) => onEditorValueChange(props, e.target.value)}
-        label={field.charAt(0).toUpperCase() + field.slice(1)} // Capitalize first letter
-        textarea={field === 'comentario'} // Use textarea for 'comentario' field
+        label={field.charAt(0).toUpperCase() + field.slice(1)}
+        textarea={field === 'comentario'}
       />
     );
   };

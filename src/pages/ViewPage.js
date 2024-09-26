@@ -19,24 +19,12 @@ const EditarPage = () => {
     useEffect(() => {
         const fetchPedido = async () => {
             try {
-                const response = await axios.get(`http://localhost:5000/ordem/${id}`);
+                const response = await axios.get(`http://localhost:5003/ordem/${id}`);
                 const data = response.data.ordens[0];
                 setPedido(data);
                 setComentarios(data.obs || []);
             } catch (error) {
                 console.error('Error fetching order from server:', error);
-                try {
-                    const backupResponse = await axios.get('/backupDataWithComments.json');
-                    const data = backupResponse.data.ordens.find(order => order.id === parseInt(id));
-                    if (data) {
-                        setPedido(data);
-                        setComentarios(data.obs || []);
-                    } else {
-                        console.error('Order not found in backup data');
-                    }
-                } catch (backupError) {
-                    console.error('Error fetching backup data:', backupError);
-                }
             }
         };
 

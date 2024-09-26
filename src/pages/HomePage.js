@@ -17,16 +17,10 @@ const HomePage = () => {
   useEffect(() => {
     const fetchPedidos = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/ordem/0');
+        const response = await axios.get('http://localhost:5003/ordem/0');
         setPedidos(response.data.ordens.slice(-6));
       } catch (error) {
         console.error('Error fetching orders from server:', error);
-        try {
-          const backupResponse = await axios.get('/backupData.json');
-          setPedidos(backupResponse.data.ordens.slice(-6));
-        } catch (backupError) {
-          console.error('Error fetching backup data:', backupError);
-        }
       }
     };
 
@@ -34,7 +28,7 @@ const HomePage = () => {
   }, []);
 
   const handleDelete = (id) => {
-    const endpoint = `http://localhost:5000/ordem/${id}`;
+    const endpoint = `http://localhost:5003/ordem/${id}`;
     fetch(endpoint, { method: 'DELETE' })
       .then(response => {
         if (response.ok) {
