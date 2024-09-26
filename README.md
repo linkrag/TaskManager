@@ -31,6 +31,8 @@ O TaskManager se comunica com a API de Login via REST para realizar o acesso aos
 Da mesma forma, acessa a API de Ordens para gerar, consultar, modificar ordens de serviço e observações.
 A API do ViaCEP está no momento de cadastro do usuários para facilitar o preechimento do formulário.
 
+Por fim, a API de Login e Ordens se comunica com seu próprio banco de dados SQLite.
+
 
 ## Figma
 
