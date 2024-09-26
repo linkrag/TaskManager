@@ -32,3 +32,19 @@
   text-decoration: none;
   color: #000;
 }
+
+.navbar-links li.logout:hover {
+  transform: translateY(-2px);
+  cursor: pointer;
+}
+
+.navbar-links li.logout {
+  margin: 1rem;
+  transition: transform 250ms;
+  display: inline-block;
+  color: white;
+  color: #000;
+  text-decoration: none;
+  font-weight: 500;
+  align-self: center;
+}
