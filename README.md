@@ -26,6 +26,7 @@ Por fim, é possível anexar uma observação a uma ordem de produção caso haj
 
 ## Arquitetura
 ![alt text](https://github.com/linkrag/TaskManager/blob/main/public/Fluxo%20TaskManager.drawio.png?raw=true)
+
 O TaskManager se comunica com a API de Login via REST para realizar o acesso aos dados e para armazenar dados de usuários e empresas.
 Da mesma forma, acessa a API de Ordens para gerar, consultar, modificar ordens de serviço e observações.
 A API do ViaCEP está no momento de cadastro do usuários para facilitar o preechimento do formulário.
