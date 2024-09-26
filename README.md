@@ -24,6 +24,9 @@ Por fim, é possível anexar uma observação a uma ordem de produção caso haj
 ### `npm install primeicons --save`
 
 
+![alt text](https://github.com/linkrag/TaskManager/blob/main/public/Fluxo%20TaskManager.drawio.png?raw=true)
+
+
 ## Figma
 
 [Projeto Figma](https://www.figma.com/design/8JxhPxAVmSoUOYKudMfiqu/Task-Manager?node-id=0-1&t=dbSkpMOYQkBE5p6Y-1)
