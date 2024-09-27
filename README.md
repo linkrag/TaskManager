@@ -48,8 +48,8 @@ Esse é o microserviço responsável pelo motor da aplicação gerando e armazen
 
 ## Como executar (Docker)
 
-Basta realizar o comando docker build -t task-manager .
-Em seguida: docker run -p 3000:3000 task-manager
+Basta realizar o comando `docker build -t task-manager .`
+Em seguida: `docker run -p 3000:3000 task-manager`
 
 ## Available Scripts
 
