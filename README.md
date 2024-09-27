@@ -46,6 +46,10 @@ Esse é o microserviço responsável pelo controle de usuários e acesso a plata
 ### [Ordens](https://github.com/linkrag/pos-fullstack-basico)
 Esse é o microserviço responsável pelo motor da aplicação gerando e armazenando ordens de serviço e observações.
 
+### Como executar (Docker)
+
+Basta realizar o comando docker build -t task-manager .
+Em seguida: docker run -p 3000:3000 task-manager
 
 ## Available Scripts
 
