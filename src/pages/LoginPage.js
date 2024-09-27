@@ -19,7 +19,7 @@ const LoginPage = () => {
       const encryptedPassword = CryptoJS.SHA256(password).toString();
       const response = await axios.post('http://localhost:5002/login', {
         username,
-        password: encryptedPassword,
+        pwd: encryptedPassword,
       });
 
       if (response.data.token) {
